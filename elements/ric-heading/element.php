@@ -121,8 +121,8 @@ class Richeading extends \Breakdance\Elements\Element
         "content",
         "content",
         [c(
-        "test",
-        "test",
+        "text",
+        "text",
         [],
         ['type' => 'text', 'layout' => 'vertical'],
         false,
@@ -213,7 +213,7 @@ class Richeading extends \Breakdance\Elements\Element
 
     static function attributes()
     {
-        return false;
+        return [['name' => 'data-content-editable-property-path', 'template' => 'content.content.text']];
     }
 
     static function experimental()
@@ -228,7 +228,7 @@ class Richeading extends \Breakdance\Elements\Element
 
     static function dynamicPropertyPaths()
     {
-        return ['0' => ['accepts' => 'string', 'path' => 'content.content.test']];
+        return [];
     }
 
     static function additionalClasses()

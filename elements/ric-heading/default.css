@@ -11,3 +11,8 @@
     stroke: currentColor;
     fill: currentColor;
 }
+
+.breakdance .ric-heading {
+  max-width: 100%;
+  margin: 0;
+}
