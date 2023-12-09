@@ -4,7 +4,7 @@
  * Plugin Name: Breakdance Custom Elements
  * Plugin URI: https://breakdance.com/
  * Description: Boilerplate plugin to save your custom elements created with Element Studio.
- * Author: Breakdance
+ * Author: Alric
  * Author URI: https://breakdance.com/
  * License: GPLv2
  * Text Domain: breakdance
