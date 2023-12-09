@@ -1,0 +1,13 @@
+.breakdance .ric-heading-icon { /* prefix with element classname, i.e. .element-classname .some-class-to-wrap-the-icon */
+    display: flex;
+    font-size: 24px;
+}
+
+.breakdance .ric-heading-icon > svg { /* also, prefix with element classname */
+    font-size: inherit;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}

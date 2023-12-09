@@ -7,15 +7,15 @@ use function Breakdance\Elements\PresetSections\getPresetSection;
 
 
 \Breakdance\ElementStudio\registerElementForEditing(
-    "BreakdanceCustomElements\\Heading",
+    "BreakdanceCustomElements\\Richeading",
     \Breakdance\Util\getdirectoryPathRelativeToPluginFolder(__DIR__)
 );
 
-class Heading extends \Breakdance\Elements\Element
+class Richeading extends \Breakdance\Elements\Element
 {
     static function uiIcon()
     {
-        return 'HeadingIcon';
+        return 'SquareIcon';
     }
 
     static function tag()
@@ -25,17 +25,17 @@ class Heading extends \Breakdance\Elements\Element
 
     static function tagOptions()
     {
-        return ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+        return ['h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span'];
     }
 
     static function tagControlPath()
     {
-        return "content.content.tags";
+        return "content.content.tag";
     }
 
     static function name()
     {
-        return 'Heading';
+        return 'Ric-heading';
     }
 
     static function className()
@@ -70,7 +70,7 @@ class Heading extends \Breakdance\Elements\Element
 
     static function defaultProperties()
     {
-        return ['content' => ['content' => ['text' => 'This is a heading.']]];
+        return false;
     }
 
     static function defaultChildren()
@@ -86,53 +86,85 @@ class Heading extends \Breakdance\Elements\Element
 
     static function designControls()
     {
-        return [getPresetSection(
+        return [c(
+        "text",
+        "text",
+        [getPresetSection(
       "EssentialElements\\typography_with_effects_and_align",
       "Typography",
       "typography",
        ['type' => 'popout']
-     ), c(
-        "size",
-        "Size",
-        [c(
-        "width",
-        "Width",
-        [],
-        ['type' => 'unit', 'layout' => 'inline', 'rangeOptions' => ['min' => 300, 'max' => 1200, 'step' => 1], 'unitOptions' => ['types' => [], 'defaultType' => 'px']],
-        true,
-        false,
-        [],
-      )],
+     )],
         ['type' => 'section'],
         false,
         false,
         [],
-      ), getPresetSection(
-      "EssentialElements\\spacing_margin_y",
-      "Spacing",
-      "spacing",
+      ), c(
+        "icon",
+        "icon",
+        [getPresetSection(
+      "EssentialElements\\AtomV1IconDesignWithHover",
+      "Icon",
+      "icon",
        ['type' => 'popout']
-     )];
+     )],
+        ['type' => 'section'],
+        false,
+        false,
+        [],
+      )];
     }
 
     static function contentControls()
     {
         return [c(
         "content",
-        "Content",
+        "content",
         [c(
-        "text",
-        "Text",
+        "test",
+        "test",
         [],
-        ['type' => 'text', 'layout' => 'vertical', 'textOptions' => ['multiline' => true]],
+        ['type' => 'text', 'layout' => 'vertical'],
         false,
         false,
         [],
       ), c(
-        "tags",
-        "Tags",
+        "tag",
+        "Tag",
         [],
-        ['type' => 'dropdown', 'layout' => 'inline', 'items' => ['0' => ['text' => 'h1', 'value' => 'h1'], '1' => ['text' => 'h2', 'value' => 'h2'], '2' => ['text' => 'h3', 'value' => 'h3'], '3' => ['text' => 'h4', 'value' => 'h4'], '4' => ['text' => 'h5', 'value' => 'h5'], '5' => ['text' => 'h6', 'value' => 'h6']]],
+        ['type' => 'dropdown', 'layout' => 'vertical', 'items' => ['0' => ['text' => 'H1', 'value' => 'h1'], '1' => ['text' => 'h2', 'value' => 'h2'], '2' => ['text' => 'h3', 'value' => 'h3'], '3' => ['text' => 'h4', 'value' => 'h4'], '4' => ['text' => 'h5', 'value' => 'h5'], '5' => ['text' => 'h6', 'value' => 'h6'], '6' => ['text' => 'p', 'value' => 'p'], '7' => ['text' => 'span', 'value' => 'span']]],
+        false,
+        false,
+        [],
+      )],
+        ['type' => 'section', 'layout' => 'vertical'],
+        false,
+        false,
+        [],
+      ), c(
+        "icon",
+        "icon",
+        [c(
+        "icon",
+        "icon",
+        [],
+        ['type' => 'icon', 'layout' => 'vertical'],
+        false,
+        false,
+        [],
+      ), c(
+        "rotate",
+        "rotate",
+        [],
+        ['type' => 'number', 'layout' => 'inline', 'rangeOptions' => ['min' => 0, 'max' => 360, 'step' => 1]],
+        false,
+        false,
+        [],
+      ), c(
+        "link",
+        "Link",
+        [],
+        ['type' => 'link', 'layout' => 'vertical'],
         false,
         false,
         [],
@@ -176,12 +208,12 @@ class Heading extends \Breakdance\Elements\Element
 
     static function spacingBars()
     {
-        return ['0' => ['location' => 'outside-top', 'cssProperty' => 'margin-top', 'affectedPropertyPath' => 'design.spacing.margin_top.%%BREAKPOINT%%'], '1' => ['location' => 'outside-bottom', 'cssProperty' => 'margin-bottom', 'affectedPropertyPath' => 'design.spacing.margin_bottom.%%BREAKPOINT%%']];
+        return false;
     }
 
     static function attributes()
     {
-        return [['name' => 'data-content-editable-property-path', 'template' => 'content.content.text']];
+        return false;
     }
 
     static function experimental()
@@ -191,12 +223,12 @@ class Heading extends \Breakdance\Elements\Element
 
     static function order()
     {
-        return 50;
+        return 0;
     }
 
     static function dynamicPropertyPaths()
     {
-        return ['0' => ['accepts' => 'string', 'path' => 'content.content.text'], '1' => ['path' => 'settings.advanced.attributes[].value', 'accepts' => 'string']];
+        return ['0' => ['accepts' => 'string', 'path' => 'content.content.test']];
     }
 
     static function additionalClasses()
@@ -206,7 +238,7 @@ class Heading extends \Breakdance\Elements\Element
 
     static function projectManagement()
     {
-        return ['looksGood' => 'yes', 'optionsGood' => 'yes', 'optionsWork' => 'yes', 'dynamicBehaviorWorks' => 'yes'];
+        return false;
     }
 
     static function propertyPathsToWhitelistInFlatProps()
